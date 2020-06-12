@@ -17,8 +17,8 @@ class makeNumbers {
 
 	public void checkBall(int i) {
 		for (int j = 0; j < RandomNumbers.length; j++) {
-			if (i == j)
-				continue;
+			if (i == j) {
+			}
 			else if (myIntNumbers[i] == RandomNumbers[j])
 				ball++;
 		}
