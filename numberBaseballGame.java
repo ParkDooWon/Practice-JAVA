@@ -8,88 +8,107 @@ class makeNumbers {
 	String myStringNumbers;
 	int[] RandomNumbers = new int[3];
 	int[] myIntNumbers = new int[3];
-	int strike=0, ball=0, retry;
-	
+	int strike = 0, ball = 0, retry;
+
 	public void checkStrike(int i) {
-		if(RandomNumbers[i] == myIntNumbers[i]) strike++;
+		if (RandomNumbers[i] == myIntNumbers[i])
+			strike++;
 	}
+
 	public void checkBall(int i) {
-		for(int j=0;j<RandomNumbers.length;j++) {
-			if(i==j) continue;
-			else if (myIntNumbers[i] == RandomNumbers[j]) ball++;
+		for (int j = 0; j < RandomNumbers.length; j++) {
+			if (i == j)
+				continue;
+			else if (myIntNumbers[i] == RandomNumbers[j])
+				ball++;
 		}
 	}
+
 	public void Count() {
-		for(int i=0;i<RandomNumbers.length;i++) checkStrike(i);
-		for(int i=0;i<RandomNumbers.length;i++) checkBall(i);
+		for (int i = 0; i < RandomNumbers.length; i++)
+			checkStrike(i);
+		for (int i = 0; i < RandomNumbers.length; i++)
+			checkBall(i);
 	}
+
 	public void printCount() {
-		if(strike == 0 && ball == 0) System.out.println("Nothing");
-		else if(strike > 0 && ball > 0) System.out.println(strike+" ½ºÆ®¶óÀÌÅ© "+ball+"º¼");
-		else if(strike > 0) System.out.println(strike + "½ºÆ®¶óÀÌÅ©");
-		else if(ball > 0) System.out.println(ball + "º¼");
+		if (strike == 0 && ball == 0)
+			System.out.println("Nothing");
+		else if (strike > 0 && ball > 0)
+			System.out.println(strike + " ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Å© " + ball + "ï¿½ï¿½");
+		else if (strike > 0)
+			System.out.println(strike + "ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Å©");
+		else if (ball > 0)
+			System.out.println(ball + "ï¿½ï¿½");
 	}
+
 	public void getNums() {
 		strike = ball = 0;
-		System.out.print("¼ýÀÚ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä : ");
-		System.out.println("now String : "+ myStringNumbers);
+		System.out.print("ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½ : ");
+		System.out.println("now String : " + myStringNumbers);
 		myStringNumbers = input.nextLine();
 		input.nextLine();
-		System.out.println("length of String = "+myStringNumbers.length());
-		for(int i=0;i<3;i++) 
-			myIntNumbers[i] = Integer.parseInt(myStringNumbers.substring(i,i+1));	//Ã³À½¿£ µÇ´Âµ¥ ´Ù½Ã ½ÃÀÛÇÏ¸é String index out of range : 1 ¿À·ù ¹ß»ý
+		System.out.println("length of String = " + myStringNumbers.length());
+		for (int i = 0; i < 3; i++)
+			myIntNumbers[i] = Integer.parseInt(
+				myStringNumbers.substring(i, i + 1));    //Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´Âµï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ String index out of range : 1 ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 		Count();
 		printCount();
-	}	
-	
+	}
+
 	public boolean checkOverlap(int tmp) {
-		for(int i=0;i<RandomNumbers.length;i++) if(tmp==RandomNumbers[i]) return true;
+		for (int randomNumber : RandomNumbers)
+			if (tmp == randomNumber)
+				return true;
 		return false;
 	}
-	
+
 	public void makeRandomNumbers() {
 		int tmp;
-		for(int i=0;i<3;i++) {
+		for (int i = 0; i < 3; i++) {
 			tmp = random.nextInt(10);
-			while (checkOverlap(tmp)) tmp=random.nextInt(10);
-			RandomNumbers[i]=tmp;
+			while (checkOverlap(tmp))
+				tmp = random.nextInt(10);
+			RandomNumbers[i] = tmp;
 		}
 		System.out.print("RandomNums : ");
-		for(int i=0;i<3;i++) System.out.print(RandomNumbers[i]);
+		for (int i = 0; i < 3; i++)
+			System.out.print(RandomNumbers[i]);
 		System.out.println();
 	}
+
 	public void init() {
 		Arrays.fill(RandomNumbers, -1);
 		Arrays.fill(myIntNumbers, 0);
-		myStringNumbers=null;
+		myStringNumbers = null;
 	}
+
 	public boolean startGame() {
 		init();
 		makeRandomNumbers();
 		strike = ball = 0;
-		while(strike < 3) 
+		while (strike < 3)
 			getNums();
-		System.out.println("3°³ÀÇ ¼ýÀÚ¸¦ ¸ðµÎ ¸ÂÈ÷¼Ì½À´Ï´Ù! °ÔÀÓÁ¾·á");
-		System.out.println("°ÔÀÓÀ» »õ·Î ½ÃÀÛÇÏ·Á¸é 1, Á¾·áÇÏ·Á¸é 2¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("3ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ï´ï¿½! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ 1, ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.");
 		retry = input.nextInt();
-		if(retry == 1) return true;
-		return false;
+		return retry == 1;
 	}
 }
 
 public class numberBaseballGame {
 	public static void main(String[] args) {
-		
+
 		makeNumbers m = new makeNumbers();
 		//while(m.startGame());
 		String s;
 		Scanner sc = new Scanner(System.in);
-		while(true) {
-			s=null;
+		while (true) {
+			s = null;
 			s = sc.nextLine();
-			for(int i=0;i<3;i++)
-				System.out.println(Integer.parseInt(s.substring(i,i+1)));
+			for (int i = 0; i < 3; i++)
+				System.out.println(Integer.parseInt(s.substring(i, i + 1)));
 		}
-		//System.out.println("Á¾·áµÇ¾ú½À´Ï´Ù.");
+		//System.out.println("ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	}
 }
