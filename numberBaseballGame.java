@@ -89,8 +89,8 @@ class makeNumbers {
 		strike = ball = 0;
 		while (strike < 3)
 			getNums();
-		System.out.println("3���� ���ڸ� ��� �����̽��ϴ�! ��������");
-		System.out.println("������ ���� �����Ϸ��� 1, �����Ϸ��� 2�� �Է��ϼ���.");
+//		System.out.println("3���� ���ڸ� ��� �����̽��ϴ�! ��������");
+//		System.out.println("������ ���� �����Ϸ��� 1, �����Ϸ��� 2�� �Է��ϼ���.");
 		retry = input.nextInt();
 		return retry == 1;
 	}
