@@ -89,8 +89,8 @@ class makeNumbers {
 		strike = ball = 0;
 		while (strike < 3)
 			getNums();
-//		System.out.println("3���� ���ڸ� ��� �����̽��ϴ�! ��������");
-//		System.out.println("������ ���� �����Ϸ��� 1, �����Ϸ��� 2�� �Է��ϼ���.");
+		System.out.println("3���� ���ڸ� ��� �����̽��ϴ�! ��������");
+		System.out.println("������ ���� �����Ϸ��� 1, �����Ϸ��� 2�� �Է��ϼ���.");
 		retry = input.nextInt();
 		return retry == 1;
 	}
@@ -100,7 +100,7 @@ public class numberBaseballGame {
 	public static void main(String[] args) {
 
 		makeNumbers m = new makeNumbers();
-		//while(m.startGame());
+		while(m.startGame());
 		String s;
 		Scanner sc = new Scanner(System.in);
 		while (true) {
@@ -109,6 +109,5 @@ public class numberBaseballGame {
 			for (int i = 0; i < 3; i++)
 				System.out.println(Integer.parseInt(s.substring(i, i + 1)));
 		}
-		//System.out.println("����Ǿ����ϴ�.");
 	}
 }
